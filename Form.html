@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --navy:   #0D1B2A;
+      --cream:  #F5F0E8;
+      --slate:  #4A5568;
+      --coral:  #E8613A;
+      --line:   #D4CFC6;
+      --white:  #FFFFFF;
+      --card-bg:#FFFFFF;
+      --radius: 4px;
+      --ease:   cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Page ── */
+    body {
+      min-height: 100vh;
+      background-color: var(--navy);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, #1a3050 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+    }
+
+    /* ── Card ── */
+    .card {
+      width: 100%;
+      max-width: 520px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 56px 52px 52px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+      animation: rise .55s var(--ease) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Heading ── */
+    .heading-wrap {
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--navy);
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Coral underline sweep — the signature element */
+    h1::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      height: 3px;
+      width: 100%;
+      background: var(--coral);
+      transform: scaleX(0);
+      transform-origin: left center;
+      border-radius: 2px;
+      animation: sweep .6s .4s var(--ease) forwards;
+    }
+
+    @keyframes sweep {
+      to { transform: scaleX(1); }
+    }
+
+    .sub {
+      margin-top: 18px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--slate);
+    }
+
+    /* ── Form fields ── */
+    .field {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--navy);
+      background: var(--cream);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+      appearance: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(232,97,58,.12);
+      background: var(--white);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #A8A29E;
+    }
+
+    /* Select arrow */
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap::after {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--slate);
+    }
+
+    select { cursor: pointer; }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 28px 0;
+    }
+
+    /* ── Submit button ── */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 15px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--white);
+      background: var(--coral);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .2s var(--ease), transform .15s var(--ease), box-shadow .2s var(--ease);
+    }
+
+    .btn:hover {
+      background: #d4522d;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(232,97,58,.30);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ── Footer note ── */
+    .note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .card { padding: 40px 28px 36px; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation: none; }
+      h1::after { animation: none; transform: scaleX(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="heading-wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h1>Let's talk.</h1>
+      <p class="sub">Fill in the form and I'll get back to you as soon as I can.</p>
+    </div>
+
+    <form action="https://formspree.io/f/xpqelpoz" method="POST">
+
+      <!-- Name -->
+      <div class="field">
+        <label for="name">Your name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Jane Smith"
+          required
+          autocomplete="name"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="jane@example.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <!-- Subject -->
+      <div class="field">
+        <label for="subject">Subject</label>
+        <div class="select-wrap">
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Choose a topic…</option>
+            <option value="General enquiry">General enquiry</option>
+            <option value="Project proposal">Project proposal</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Message -->
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Tell me what's on your mind…"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Honeypot spam guard (hidden from real users) -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <!-- Redirect after submission (optional — update to your thank-you page) -->
+      <!-- <input type="hidden" name="_next" value="https://yoursite.com/thank-you.html" /> -->
+
+      <button type="submit" class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+        Send message
+      </button>
+
+      <p class="note">Your information is only used to respond to your message.</p>
+    </form>
+  </div>
+
+</body>
+</html>
